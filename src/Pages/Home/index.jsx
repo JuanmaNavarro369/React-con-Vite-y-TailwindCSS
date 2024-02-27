@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import {useState, useEffect } from 'react';
 import { Layout } from '../../Components/Layout';
 import { Card } from '../../Components/Card';
 
@@ -10,6 +10,7 @@ function Home() {
         fetch('https://api.escuelajs.co/api/v1/products')
         .then(response => response.json())
         .then(data => setCards(data))
+        .catch(error => console.error('Error fetching data:', error));
     }, []);
 
     return (
