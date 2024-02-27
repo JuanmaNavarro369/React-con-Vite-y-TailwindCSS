@@ -7,7 +7,7 @@ function Navbar() {
     return(
         <nav className='flex justify-between items-center fixed z-10 top-0 w-full py-2 px-2 text-sm italic'>
 
-            <ul className="flex items-center gap-3">
+            <ul className="flex items-center gap-3 mr-3">
                 <li>
                     <NavLink to='/' className='font-semibold text-lg'>
                         AntiqueTansi
