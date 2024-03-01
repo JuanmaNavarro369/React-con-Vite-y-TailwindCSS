@@ -6,8 +6,15 @@ import "./styles.css"
 
 function MyOrderMenu() {
 
-    const {isMyOrderOpen, closeMyOrder, addCartProducts} = useContext(MyContext);
+    const {isMyOrderOpen, closeMyOrder, addCartProducts, setAddCartProducts} = useContext(MyContext);
     console.log(addCartProducts)
+
+    const removeProducts = (id) => {
+        const filteredProducts = addCartProducts.filter((product) => {
+            return product.id !== id
+        });
+        setAddCartProducts(filteredProducts)
+    }
 
     return(
         <aside
@@ -24,9 +31,11 @@ function MyOrderMenu() {
             addCartProducts?.map((product) => (
                 <OrderCard 
                     key={product.id}
+                    id={product.id}
                     title={product.title}
                     images={product.image}
                     price={product.price}
+                    removeProducts={removeProducts}
                 />
             ))
             }
