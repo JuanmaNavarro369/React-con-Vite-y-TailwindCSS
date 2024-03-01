@@ -1,0 +1,5 @@
+.my-order-menu{
+    width: 360px;
+    height: calc(90vh - 44px);
+    top: 44px;
+}

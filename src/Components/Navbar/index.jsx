@@ -5,15 +5,16 @@ import { NavLink } from "react-router-dom";
 
 function Navbar() {
 
-    const { count } = useContext(MyContext);
+    const { count, toggleMyOrder } = useContext(MyContext);
     const activeStyle = 'underline underline-offset-4'
 
     return(
-        <nav className='flex justify-between items-center fixed z-10 top-0 w-full py-2 px-2 text-sm'>
+        <nav 
+        className='flex justify-between items-center fixed z-10 top-0 w-full py-2 px-2 text-sm bg-teal-700 shadow-lg shadow-teal-800/50 rounded-l-sm rounded-tr-sm text-white/80'>
 
             <ul className="flex items-center gap-3 mr-3">
                 <li>
-                    <NavLink to='/' className='font-semibold text-lg'>
+                    <NavLink to='/' className='font-semibold text-lg text-white'>
                         AntiqueTansi
                     </NavLink>
                 </li>
@@ -104,8 +105,10 @@ function Navbar() {
                         Sign In
                     </NavLink>
                 </li>
-                <li className="flex items-center">
-                <ShoppingBagIcon className="w-6"/> {count}
+                <li
+                onClick={() => toggleMyOrder()}
+                className="flex items-center cursor-pointer">
+                <ShoppingBagIcon className="w-6 text-white"/> {count}
                 </li>
             </ul>
 

@@ -1,5 +1,9 @@
-.product-detail{
+.product-detail {
     width: 360px;
-    height: calc(100vh - 50px);
-    top: 50px;
+    height: calc(99vh - 44px);
+    top: 44px;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+    display: none;
 }

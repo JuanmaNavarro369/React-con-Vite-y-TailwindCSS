@@ -8,7 +8,7 @@ function Home() {
     const [cards, setCards] = useState(null);
 
     useEffect(() => {
-        fetch('https://api.escuelajs.co/api/v1/products')
+        fetch('https://fakestoreapi.com/products')
         .then(response => response.json())
         .then(data => setCards(data))
         .catch(error => console.error(error));
@@ -18,7 +18,7 @@ function Home() {
         <>
             <Layout>
                 Home
-                <div className='grid grid-cols-4 w-full max-w-screen-lg gap-3'>
+                <div className='grid grid-cols-4 w-full max-w-screen-lg gap-24'>
                 {
                     cards?.map((card) => (
                         <Card
