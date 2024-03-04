@@ -20,7 +20,7 @@ function Card(data) {
             return (
                 <div className="bg-green-600 w-6 h-6 absolute top-1 right-1 flex justify-center items-center rounded-full">
                     <CheckIcon
-                    className="text-white"/>
+                    className="text-white p-1 rounded-full"/>
                 </div>
                 )}
         else {

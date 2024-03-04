@@ -19,7 +19,7 @@ function MyProvider({children}) {
 
     const openMyOrder = () => setIsMyOrderOpen(true); // MyOrder open
     const closeMyOrder = () => setIsMyOrderOpen(false); // MyOrder close
-    const toggleMyOrder = () => setIsMyOrderOpen(!isMyOrderOpen) // MyOrder toggle
+    const toggleMyOrder = () => setIsMyOrderOpen(!isMyOrderOpen) // MyOrderMenu toggle
 
     return (
         <MyContext.Provider

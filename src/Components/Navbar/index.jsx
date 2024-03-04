@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 
 function Navbar() {
 
-    const { count, toggleMyOrder } = useContext(MyContext);
+    const { count, toggleMyOrder, closeProductDetail } = useContext(MyContext);
     const activeStyle = 'underline underline-offset-4'
 
     return(
@@ -106,7 +106,10 @@ function Navbar() {
                     </NavLink>
                 </li>
                 <li
-                onClick={() => toggleMyOrder()}
+                onClick={() => {
+                    toggleMyOrder()
+                    closeProductDetail()
+                }}
                 className="flex items-center cursor-pointer">
                 <ShoppingBagIcon className="w-6 text-white"/> {count}
                 </li>
