@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { XMarkIcon } from "@heroicons/react/24/solid"
 import { useContext } from "react";
 import { MyContext } from "../../Context";
@@ -7,9 +8,7 @@ import "./styles.css"
 
 function MyOrderMenu() {
 
-    const {isMyOrderOpen, closeMyOrder, addCartProducts, setAddCartProducts, order, setOrder} =
-    useContext(MyContext);
-    console.log(addCartProducts)
+    const {isMyOrderOpen, closeMyOrder, setCount, addCartProducts, setAddCartProducts, order, setOrder} = useContext(MyContext);
 
     const removeProducts = (id) => {
         const filteredProducts = addCartProducts.filter((product) => {
@@ -25,7 +24,7 @@ function MyOrderMenu() {
             totalProducts: addCartProducts.length,
             totalPrice: totalPrice(addCartProducts)
         }
-        setOrder(...order, orderToAdd);
+        setOrder([...order, orderToAdd]);
         setAddCartProducts([]);
     }
 
@@ -60,10 +59,16 @@ function MyOrderMenu() {
                     <span className="text-md">Total Price :</span>
                     <span className="text-xl font-bold">${totalPrice(addCartProducts)}</span>
                 </p>
-                <button 
-                    className="bg-teal-700 w-full py-2 text-white rounded-md"
-                    onClick={() => handleCheckout()}>Checkout
-                </button>
+                <Link to="/my-orders/last">
+                    <button 
+                        className="bg-teal-700 w-full py-2 text-white rounded-md"
+                        onClick={() => {
+                        handleCheckout()
+                        setCount(0)
+                        }}>
+                        Checkout
+                    </button>
+                </Link>
             </footer>
 
         </aside>
