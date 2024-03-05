@@ -2,6 +2,7 @@ import { XMarkIcon } from "@heroicons/react/24/solid"
 import { useContext } from "react";
 import { MyContext } from "../../Context";
 import { OrderCard } from "../OrderCard";
+import { totalPrice } from "../../utils";
 import "./styles.css"
 
 function MyOrderMenu() {
@@ -39,6 +40,11 @@ function MyOrderMenu() {
                 />
             ))
             }
+
+            <p className="flex justify-between items-center w-full sticky bottom-0 bg-white border-t-2 border-teal-700 p-2">
+                <span className="text-md">Total Price :</span>
+                <span className="text-xl font-bold">${totalPrice(addCartProducts)}</span>
+            </p>
 
         </aside>
     )
