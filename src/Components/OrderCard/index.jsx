@@ -1,6 +1,10 @@
 import { XMarkIcon } from "@heroicons/react/24/solid"
+import { useContext } from "react"
+import { MyContext } from "../../Context";
 
 function OrderCard({ id, title, images, price, removeProducts }) {
+
+    const {count, setCount} = useContext(MyContext);
 
     return (
         <div className="flex justify-between items-center  w-3/5">
@@ -17,7 +21,10 @@ function OrderCard({ id, title, images, price, removeProducts }) {
             <div className="flex items-center gap-2 right-0 absolute">
                 <p className="text-lg font-bold">${price}</p>
                 <XMarkIcon
-                    onClick={() => removeProducts(id)}
+                    onClick={() => {
+                        removeProducts(id)
+                        setCount(count - 1)
+                    }}
                     className="w-6 mr-1 cursor-pointer hover:text-red-700"
                 />
             </div>

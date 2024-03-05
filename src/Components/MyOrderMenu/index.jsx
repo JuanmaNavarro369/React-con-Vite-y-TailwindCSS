@@ -7,7 +7,8 @@ import "./styles.css"
 
 function MyOrderMenu() {
 
-    const {isMyOrderOpen, closeMyOrder, addCartProducts, setAddCartProducts} = useContext(MyContext);
+    const {isMyOrderOpen, closeMyOrder, addCartProducts, setAddCartProducts, order, setOrder} =
+    useContext(MyContext);
     console.log(addCartProducts)
 
     const removeProducts = (id) => {
@@ -17,34 +18,53 @@ function MyOrderMenu() {
         setAddCartProducts(filteredProducts)
     }
 
+    const handleCheckout = () => {
+        const orderToAdd = {
+            date: '01.02.23',
+            products: addCartProducts,
+            totalProducts: addCartProducts.length,
+            totalPrice: totalPrice(addCartProducts)
+        }
+        setOrder(...order, orderToAdd);
+        setAddCartProducts([]);
+    }
+
     return(
         <aside
         className={`${isMyOrderOpen ? 'flex' : 'hidden'} my-order-menu flex-col fixed right-0 bg-white border border-black rounded-b-lg rounded-tl-sm z-10 overflow-x-auto scrollbar-hidden`}>
 
             <span className="flex justify-between items-center px-3 py-3 bg-teal-700 shadow-lg shadow-teal-800/50">
-                <h2 className="text-white/80">My Order</h2>
+                <h2 className="text-white">My Order</h2>
                 <XMarkIcon
                 className=" w-6 cursor-pointer hover:text-red-700"
                 onClick={closeMyOrder}/>
             </span>
 
-            {
-            addCartProducts?.map((product) => (
+            <div className="flex-1">
+                {
+                addCartProducts?.map((product) => (
                 <OrderCard 
-                    key={product.id}
-                    id={product.id}
-                    title={product.title}
-                    images={product.image}
-                    price={product.price}
-                    removeProducts={removeProducts}
+                key={product.id}
+                id={product.id}
+                title={product.title}
+                images={product.image}
+                price={product.price}
+                removeProducts={removeProducts}
                 />
-            ))
-            }
+                ))
+                }
+            </div>
 
-            <p className="flex justify-between items-center w-full sticky bottom-0 bg-white border-t-2 border-teal-700 p-2">
-                <span className="text-md">Total Price :</span>
-                <span className="text-xl font-bold">${totalPrice(addCartProducts)}</span>
-            </p>
+            <footer className="sticky bottom-0">
+                <p className="flex justify-between items-center w-full bg-white border-t-2 border-teal-700 p-2">
+                    <span className="text-md">Total Price :</span>
+                    <span className="text-xl font-bold">${totalPrice(addCartProducts)}</span>
+                </p>
+                <button 
+                    className="bg-teal-700 w-full py-2 text-white rounded-md"
+                    onClick={() => handleCheckout()}>Checkout
+                </button>
+            </footer>
 
         </aside>
     )

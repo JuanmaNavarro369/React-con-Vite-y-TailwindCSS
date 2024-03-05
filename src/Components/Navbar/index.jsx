@@ -110,8 +110,8 @@ function Navbar() {
                     toggleMyOrder()
                     closeProductDetail()
                 }}
-                className="flex items-center cursor-pointer">
-                <ShoppingBagIcon className="w-6 text-white"/> {count}
+                className="flex items-center cursor-pointer text-white">
+                <ShoppingBagIcon className="w-6"/> {count}
                 </li>
             </ul>
 

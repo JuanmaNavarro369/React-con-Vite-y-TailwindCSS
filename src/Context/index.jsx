@@ -13,12 +13,14 @@ function MyProvider({children}) {
 
     const [isMyOrderOpen, setIsMyOrderOpen] = useState(false); // MyOrder · Show/Hidde
 
+    const [order, setOrder] = useState([]); // Shopping Cart · Order Placed
+
     // Estados Derivados
     const openProductDetail = () => setIsProductDetailOpen(true); // Product Detail open
     const closeProductDetail = () => setIsProductDetailOpen(false); // Product Detail close
 
-    const openMyOrder = () => setIsMyOrderOpen(true); // MyOrder open
-    const closeMyOrder = () => setIsMyOrderOpen(false); // MyOrder close
+    const openMyOrder = () => setIsMyOrderOpen(true); // MyOrderMenu open
+    const closeMyOrder = () => setIsMyOrderOpen(false); // MyOrderMenu close
     const toggleMyOrder = () => setIsMyOrderOpen(!isMyOrderOpen) // MyOrderMenu toggle
 
     return (
@@ -37,6 +39,8 @@ function MyProvider({children}) {
             setProductToShow,
             addCartProducts,
             setAddCartProducts,
+            order,
+            setOrder,
         }}>
 
         {children}
