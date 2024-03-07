@@ -26,13 +26,14 @@ function MyOrderMenu() {
         }
         setOrder([...order, orderToAdd]);
         setAddCartProducts([]);
+        closeMyOrder()
     }
 
     return(
         <aside
         className={`${isMyOrderOpen ? 'flex' : 'hidden'} my-order-menu flex-col fixed right-0 bg-white border border-black rounded-b-lg rounded-tl-sm z-10 overflow-x-auto scrollbar-hidden`}>
 
-            <span className="flex justify-between items-center px-3 py-3 bg-teal-700 shadow-lg shadow-teal-800/50">
+            <span className="flex justify-between items-center px-3 py-3 mb-5 bg-teal-700 shadow-lg shadow-teal-800/50">
                 <h2 className="text-white">My Order</h2>
                 <XMarkIcon
                 className=" w-6 cursor-pointer hover:text-red-700"
