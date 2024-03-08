@@ -10,7 +10,7 @@ function MyOrders() {
 
     return (
         <Layout>
-            My Orders
+            <h1>My Orders</h1>
             {
             order.map((order, index) => (
                 <Link key={index} to={`/my-orders/${index}`}>
