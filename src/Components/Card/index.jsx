@@ -5,7 +5,8 @@ import { MyContext } from "../../Context"
 function Card(data) {
 
     const {
-        count, setCount, openProductDetail, closeProductDetail, setProductToShow, addCartProducts, setAddCartProducts, openMyOrder, closeMyOrder} = useContext(MyContext);
+        openProductDetail, closeProductDetail, setProductToShow, addCartProducts, setAddCartProducts, openMyOrder, closeMyOrder
+    } = useContext(MyContext);
 
     const showProduct = (productData) => {
         openProductDetail()
@@ -29,7 +30,6 @@ function Card(data) {
                 onClick={(event) => {
                 //stopPropagation evita el conflicto de eventos entre mostrar Product Detail y MyOrderMenu
                 event.stopPropagation()
-                setCount(count + 1)
                 setAddCartProducts([...addCartProducts, data.data])
                 openMyOrder()
                 closeProductDetail()

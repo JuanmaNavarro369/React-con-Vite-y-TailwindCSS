@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 
 function Navbar() {
 
-    const { count, toggleMyOrder, closeProductDetail, setFilterByCategory } = useContext(MyContext);
+    const { addCartProducts, toggleMyOrder, closeProductDetail, setFilterByCategory } = useContext(MyContext);
     const activeStyle = 'underline underline-offset-4'
 
     return(
@@ -85,7 +85,7 @@ function Navbar() {
 
             <ul className="flex items-center gap-3">
                 <li className="text-black/60">
-                    tansi@platzi.com
+                    student@platzi.com
                 </li>
                 <li>
                     <NavLink 
@@ -120,7 +120,7 @@ function Navbar() {
                     closeProductDetail()
                 }}
                 className="flex items-center cursor-pointer text-white">
-                <ShoppingBagIcon className="w-6"/> {count}
+                <ShoppingBagIcon className="w-6"/> {addCartProducts.length}
                 </li>
             </ul>
 

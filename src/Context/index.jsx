@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect } from 'react';
 const MyContext = createContext();
 
 
@@ -15,7 +15,6 @@ function MyProvider({ children }) {
         .catch(error => console.error(error));
     }, []);
 
-    const [count, setCount] = useState(0); //Shopping Cart · Increment Quantity
     const [addCartProducts, setAddCartProducts] = useState([]); // Shopping Cart · Add Products
 
     const [isProductDetailOpen, setIsProductDetailOpen] = useState(false); //Product Detail · Show/Hidde
@@ -25,8 +24,8 @@ function MyProvider({ children }) {
 
     const [order, setOrder] = useState([]); // Shopping Cart · Order Placed
 
-    const [searchProducts, setSearchProducts] = useState(""); // Home · Search Products
-    const [filterByCategory, setFilterByCategory] = useState("all"); // Inservible
+    const [searchProducts, setSearchProducts] = useState(''); // Home · Search Products
+    const [filterByCategory, setFilterByCategory] = useState('all'); // Inservible
 
     // Estados Derivados
     const openProductDetail = () => setIsProductDetailOpen(true); // Product Detail open
@@ -43,11 +42,12 @@ function MyProvider({ children }) {
     const searchedProducts = items?.filter((item) => {
         if(route.toLowerCase() === 'all') {
             return item.title.toLowerCase().includes(searchProducts.toLowerCase())
-        }else if(route.toLowerCase() === `clothes`) {
+        }
+        else if(route.toLowerCase() === `clothes`) {
             return item.title.toLowerCase().includes(searchProducts.toLowerCase()) &&
             (
-                item.category.toLowerCase().includes(`men's clothing`) ||
-                item.category.toLowerCase().includes(`women's clothing`)
+            item.category.toLowerCase().includes(`men's clothing`) ||
+            item.category.toLowerCase().includes(`women's clothing`)
             )
         }
         else {
@@ -63,8 +63,6 @@ function MyProvider({ children }) {
         value={{
             items,
             setItems,
-            count,
-            setCount,
             isProductDetailOpen,
             openProductDetail,
             closeProductDetail,
