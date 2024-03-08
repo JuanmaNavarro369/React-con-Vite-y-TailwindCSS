@@ -5,8 +5,7 @@ import { MyContext } from "../../Context"
 function Card(data) {
 
     const {
-        count, setCount, openProductDetail, closeProductDetail, setProductToShow, addCartProducts, setAddCartProducts, openMyOrder, closeMyOrder,
-    } = useContext(MyContext);
+        count, setCount, openProductDetail, closeProductDetail, setProductToShow, addCartProducts, setAddCartProducts, openMyOrder, closeMyOrder} = useContext(MyContext);
 
     const showProduct = (productData) => {
         openProductDetail()
@@ -48,7 +47,7 @@ function Card(data) {
             }}>
 
             <figure className="relative my-6 w-full h-4/5">
-                <span className="absolute bottom-1 left-1 rounded-lg bg-white/60 text-sm px-1 py-0.5">
+                <span className="absolute bottom-1 left-1 rounded-md bg-white/60 text-sm px-1 py-0.5">
                     {data.data.category}
                 </span>
                 <img

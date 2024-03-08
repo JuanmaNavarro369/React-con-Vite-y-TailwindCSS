@@ -2,11 +2,11 @@ import { createContext, useState, useEffect } from "react";
 const MyContext = createContext();
 
 
-function MyProvider({children}) {
+function MyProvider({ children }) {
 
     // Estados
 
-    // PRODUCTS OF FAKE API STORE
+    // PRODUCTS OF FAKE STORE API
     const [items, setItems] = useState(null);
     useEffect(() => {
         fetch('https://fakestoreapi.com/products')
@@ -26,6 +26,7 @@ function MyProvider({children}) {
     const [order, setOrder] = useState([]); // Shopping Cart · Order Placed
 
     const [searchProducts, setSearchProducts] = useState(""); // Home · Search Products
+    const [filterByCategory, setFilterByCategory] = useState("all"); // Inservible
 
     // Estados Derivados
     const openProductDetail = () => setIsProductDetailOpen(true); // Product Detail open
@@ -35,9 +36,27 @@ function MyProvider({children}) {
     const closeMyOrder = () => setIsMyOrderOpen(false); // MyOrderMenu close
     const toggleMyOrder = () => setIsMyOrderOpen(!isMyOrderOpen) // MyOrderMenu toggle
 
-    const searchedProducts = items?.filter((item) => { 
-        return item.title.toLowerCase().includes(searchProducts.toLowerCase()) // Search Products by Title
+    // Search Products by Title and Category
+    const currentPath = window.location.pathname
+    const route = currentPath.substring(1)
+
+    const searchedProducts = items?.filter((item) => {
+        if(route.toLowerCase() === 'all') {
+            return item.title.toLowerCase().includes(searchProducts.toLowerCase())
+        }else if(route.toLowerCase() === `clothes`) {
+            return item.title.toLowerCase().includes(searchProducts.toLowerCase()) &&
+            (
+                item.category.toLowerCase().includes(`men's clothing`) ||
+                item.category.toLowerCase().includes(`women's clothing`)
+            )
+        }
+        else {
+            return item.title.toLowerCase().includes(searchProducts.toLowerCase()) &&
+            item.category.toLowerCase().includes(route.toLowerCase())
+        }
     });
+
+
     
     return (
         <MyContext.Provider
@@ -62,6 +81,8 @@ function MyProvider({children}) {
             searchProducts,
             setSearchProducts,
             searchedProducts,
+            filterByCategory,
+            setFilterByCategory
         }}>
 
         {children}

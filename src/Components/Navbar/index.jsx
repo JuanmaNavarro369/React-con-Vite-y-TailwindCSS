@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 
 function Navbar() {
 
-    const { count, toggleMyOrder, closeProductDetail } = useContext(MyContext);
+    const { count, toggleMyOrder, closeProductDetail, setFilterByCategory } = useContext(MyContext);
     const activeStyle = 'underline underline-offset-4'
 
     return(
@@ -14,8 +14,11 @@ function Navbar() {
 
             <ul className="flex items-center gap-3 mr-3">
                 <li>
-                    <NavLink to='/' className='font-semibold text-lg text-white'>
-                        AntiqueTansi
+                    <NavLink
+                    to='/'
+                    className='font-semibold text-lg text-white'
+                    onClick={() => setFilterByCategory('all')}>
+                        Shop
                     </NavLink>
                 </li>
                 <li>
@@ -23,7 +26,8 @@ function Navbar() {
                     className={({ isActive }) =>
                     isActive ? activeStyle : undefined
                     }
-                    to='/all'>
+                    to='/all'
+                    onClick={() => setFilterByCategory('all')}>
                         All
                     </NavLink>
                 </li>
@@ -32,7 +36,8 @@ function Navbar() {
                     className={({ isActive }) =>
                     isActive ? activeStyle : undefined
                     }
-                    to='/clothes'>
+                    to='/clothes'
+                    onClick={() => setFilterByCategory('clothes')}>
                         Clothes
                     </NavLink>
                 </li>
@@ -41,7 +46,8 @@ function Navbar() {
                     className={({ isActive }) =>
                     isActive ? activeStyle : undefined
                     }
-                    to='/electronics'>
+                    to='/electronics'
+                    onClick={() => setFilterByCategory('electronics')}>
                         Electronics
                     </NavLink>
                 </li>
@@ -50,7 +56,18 @@ function Navbar() {
                     className={({ isActive }) =>
                     isActive ? activeStyle : undefined
                     }
-                    to='/furnitures'>
+                    to='/jewelery'
+                    onClick={() => setFilterByCategory('jewelery')}>
+                        Jewelery
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink 
+                    className={({ isActive }) =>
+                    isActive ? activeStyle : undefined
+                    }
+                    to='/furnitures'
+                    onClick={() => setFilterByCategory('furnitures')}>
                         Furnitures
                     </NavLink>
                 </li>
@@ -59,16 +76,8 @@ function Navbar() {
                     className={({ isActive }) =>
                     isActive ? activeStyle : undefined
                     }
-                    to='/toys'>
-                        Toys
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink 
-                    className={({ isActive }) =>
-                    isActive ? activeStyle : undefined
-                    }
-                    to='/others'>
+                    to='/others'
+                    onClick={() => setFilterByCategory('others')}>
                         Others
                     </NavLink>
                 </li>
